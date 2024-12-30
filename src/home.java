@@ -40,6 +40,11 @@ public class home extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/student add.jpg"))); // NOI18N
         jButton1.setText("New student");
         jButton1.setPreferredSize(new java.awt.Dimension(159, 59));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/book.png"))); // NOI18N
@@ -91,6 +96,10 @@ public class home extends javax.swing.JFrame {
         setVisible(false);
         new login().setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new newStudent().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
