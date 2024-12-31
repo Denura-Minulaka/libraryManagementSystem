@@ -60,6 +60,11 @@ public class home extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/analitics.png"))); // NOI18N
         jButton3.setText("Statistics");
         jButton3.setPreferredSize(new java.awt.Dimension(159, 59));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/issue books.png"))); // NOI18N
@@ -73,7 +78,7 @@ public class home extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 130, -1, -1));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rent books.jpg"))); // NOI18N
-        jButton5.setText("Rent books");
+        jButton5.setText("Return books");
         jButton5.setPreferredSize(new java.awt.Dimension(159, 59));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +123,10 @@ public class home extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         new returnBook().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new statistics().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
