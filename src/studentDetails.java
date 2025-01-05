@@ -103,8 +103,8 @@ public class studentDetails extends javax.swing.JFrame {
                 String studentId = rs.getString("studentID");
                 String name = rs.getString("name");
                 String fatherName = rs.getString("fatherName");
-                String courseName = rs.getString("fatherName");
-                String branchName = rs.getString("fatherName");
+                String courseName = rs.getString("courseName");
+                String branchName = rs.getString("branchName");
                 
                 String tbData[] = {studentId,name,fatherName,courseName,branchName};
                 
