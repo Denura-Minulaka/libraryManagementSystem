@@ -182,7 +182,7 @@ public class home extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         try {
             Connection conn = singletonConnection.getCon();
-            String reportpath = "C:\\reports\\ReportLMS.jrxml";
+            String reportpath = "ReportLMS.jrxml";
             JasperReport jr = JasperCompileManager.compileReport(reportpath);
             JasperPrint jp = JasperFillManager.fillReport(jr, null, conn);
             JasperViewer.viewReport(jp);

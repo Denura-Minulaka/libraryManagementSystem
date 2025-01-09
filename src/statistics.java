@@ -113,8 +113,8 @@ public class statistics extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("select issue.studentID, student.name, issue.bookID, book.name, issue.issueDate, issue.dueDate from student inner join book inner join issue where book.bookID=issue.bookID and student.studentID=issue.studentID and issue.returnBook='NO'");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
               ResultSet rs1 = st.executeQuery("select issue.studentID, student.name, issue.bookID, book.name, issue.issueDate, issue.dueDate from student inner join book inner join issue where book.bookID=issue.bookID and student.studentID=issue.studentID and issue.returnBook='Yes'");
-              jTable2.setModel(DbUtils.resultSetToTableModel(rs1));
-        } catch (Exception e) {
+              jTable2.setModel(DbUtils.resultSetToTableModel(rs1));                       //DbUtils.resultSetToTableModel(rs) is used to convert the data retrieved in a ResultSet (which is the result of a SQL query) into a format that can be displayed in a JTable in a Java Swing application.
+        } catch (Exception e) {                                                           //DbUtils.resultSetToTableModel(rs) is a method that converts a ResultSet from a database query into a TableModel that can be used to display data in a JTable.
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_formComponentShown

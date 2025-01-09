@@ -95,11 +95,11 @@ public class studentDetails extends javax.swing.JFrame {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("select * from student");
             
-            DefaultTableModel tblModel1 = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel tblModel1 = (DefaultTableModel) jTable1.getModel();             //use to get table structure
             
-            tblModel1.setRowCount(0);           // clear privious data in the table
+            tblModel1.setRowCount(0);           // clear privious data in the table(remove all rows)
             
-            while (rs.next()) {
+            while (rs.next()) {                 // rs.next() is used for move the cursor to the next row in the result set. this is return true false value.if value is false, there are no rows to process. 
                 String studentId = rs.getString("studentID");
                 String name = rs.getString("name");
                 String fatherName = rs.getString("fatherName");
