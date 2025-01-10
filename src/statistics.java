@@ -1,5 +1,7 @@
 import java.sql.*;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 import singleton.singletonConnection;
 /*
@@ -18,8 +20,10 @@ public class statistics extends javax.swing.JFrame {
      */
     public statistics() {
         initComponents();
+        
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,9 +115,43 @@ public class statistics extends javax.swing.JFrame {
             Connection conn = singletonConnection.getCon();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("select issue.studentID, student.name, issue.bookID, book.name, issue.issueDate, issue.dueDate from student inner join book inner join issue where book.bookID=issue.bookID and student.studentID=issue.studentID and issue.returnBook='NO'");
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-              ResultSet rs1 = st.executeQuery("select issue.studentID, student.name, issue.bookID, book.name, issue.issueDate, issue.dueDate from student inner join book inner join issue where book.bookID=issue.bookID and student.studentID=issue.studentID and issue.returnBook='Yes'");
-              jTable2.setModel(DbUtils.resultSetToTableModel(rs1));                       //DbUtils.resultSetToTableModel(rs) is used to convert the data retrieved in a ResultSet (which is the result of a SQL query) into a format that can be displayed in a JTable in a Java Swing application.
+            //jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
+            int rc = df.getRowCount();
+            for (int i = 0; i < rc; i++) {
+                df.removeRow(0);
+            }
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString("issue.studentID"));
+                v.add(rs.getString("student.name"));
+                v.add(rs.getString("issue.bookID"));
+                v.add(rs.getString("book.name"));
+                v.add(rs.getString("issue.issueDate"));
+                v.add(rs.getString("issue.dueDate"));
+
+                df.addRow(v);
+            }
+            
+               ResultSet rs1 = st.executeQuery("select issue.studentID, student.name, issue.bookID, book.name, issue.issueDate, issue.dueDate from student inner join book inner join issue where book.bookID=issue.bookID and student.studentID=issue.studentID and issue.returnBook='Yes'");
+            //jTable2.setModel(DbUtils.resultSetToTableModel(rs1));                       //DbUtils.resultSetToTableModel(rs) is used to convert the data retrieved in a ResultSet (which is the result of a SQL query) into a format that can be displayed in a JTable in a Java Swing application.
+
+            DefaultTableModel df2 = (DefaultTableModel) jTable2.getModel();
+            int rc2 = df2.getRowCount();
+            for (int i = 0; i < rc2; i++) {
+                df2.removeRow(0);
+            }
+            while (rs1.next()) {
+                Vector v = new Vector();
+                v.add(rs1.getString("issue.studentID"));
+                v.add(rs1.getString("student.name"));
+                v.add(rs1.getString("issue.bookID"));
+                v.add(rs1.getString("book.name"));
+                v.add(rs1.getString("issue.issueDate"));
+                v.add(rs1.getString("issue.dueDate"));
+
+                df2.addRow(v);
+            }
         } catch (Exception e) {                                                           //DbUtils.resultSetToTableModel(rs) is a method that converts a ResultSet from a database query into a TableModel that can be used to display data in a JTable.
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
